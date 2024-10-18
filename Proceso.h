@@ -4,12 +4,16 @@ class Proceso {
 	private:
 		int pid;
 		int ppid;
-		string inicio;
-		string t_vida;
+		int inicio;
+		int t_vida;
 		int prioridad;
-		int nucleo;
-	public:
-		Proceso(int pid, int ppid, string inicio, string t_vida, int prioridadm int nucleo);
-		~Proceso();
 
+	public:
+		Proceso(int pid, int ppid, int inicio, int t_vida, int prioridad);
+		int getPID();
+		int getPPID();
+		int getInicio();
+		int getTiempoVida();
+		int getPrioridad();
+		
 };

@@ -1,13 +1,32 @@
 #include "Proceso.h"
 
-Proceso::Proceso(int pid, int ppid, string inicio, string t_vida, int prioridad int nucleo)
+Proceso::Proceso(int pid, int ppid, int inicio, int t_vida, int prioridad)
 {
 	pid = pid;
 	ppid = ppid;
 	inicio = inicio;
 	t_vida = t_vida;
 	prioridad = prioridad;
-	nucleo = nucleo;
+
 }
 
-Proceso::~Proceso();
+int Proceso::getPID() {
+    return pid;
+}
+
+int Proceso::getPPID() {
+    return ppid;
+}
+
+int Proceso::getInicio() {
+    return inicio;
+}
+
+int Proceso::getTiempoVida() {
+    return t_vida;
+}
+
+int Proceso::getPrioridad() {
+    return prioridad;
+}
+

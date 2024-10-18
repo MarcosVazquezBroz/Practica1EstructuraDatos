@@ -1,17 +1,16 @@
 #ifndef NODOPILA_H
 #define NODOPILA_H
 #include <iostream>
-
+#include "Proceso.h"
 class NodoPila
 {
 private:
-    int valor;
+    Proceso *proceso;
     NodoPila *siguiente;
-    friend class Pila;
+    friend class PilaProc;
 
 public:
-    NodoPila();
-    NodoPila(int v, NodoPila *sig = NULL);
+    NodoPila(Proceso *proc, NodoPila *sig = NULL);
     ~NodoPila();
 };
 

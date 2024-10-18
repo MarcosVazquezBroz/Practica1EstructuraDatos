@@ -1,0 +1,9 @@
+﻿  PilaProc.cpp
+D:\LabEEDD\Practica1EstructuraDatos\PilaProc.cpp(49,47): error C2228: el operando izquierdo de '.getPID' debe tener class/struct/union
+      D:\LabEEDD\Practica1EstructuraDatos\PilaProc.cpp(49,47):
+      el tipo es 'Proceso *'
+      D:\LabEEDD\Practica1EstructuraDatos\PilaProc.cpp(49,47):
+      ¿deseaba utilizar '->' en su lugar?
+  
+  Proceso.cpp
+  Generando código...
