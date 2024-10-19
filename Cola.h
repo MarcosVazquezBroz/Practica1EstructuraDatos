@@ -2,7 +2,7 @@
 
 #include "Proceso.h"
 
-class Queue {
+class Cola {
 
     private:
         struct Nodo {
@@ -14,8 +14,8 @@ class Queue {
         int   _longitud;            // N�mero de elementos en la cola
 
     public:
-        Queue();                    // Constructor
-        ~Queue();                   // Destructor
+        Cola();                    // Constructor
+        ~Cola();                   // Destructor
         void ordenar_prio(); 
         int longitud();             // Devuelve el n�mero de elementos en la cola
         void encolar(Proceso);      // Agrega un elemento al final de la cola

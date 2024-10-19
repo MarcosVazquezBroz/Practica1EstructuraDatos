@@ -1,26 +1,23 @@
 #include <iostream>
 #include "Cola.h" 
 
-Queue::Queue() {
-    // Constructor: Inicializa una cola vacía.
+Cola::Cola() {
     _primero = nullptr;
     _ultimo = nullptr;
     _longitud = 0;
 }
 
-Queue::~Queue() {
-    // Destructor: Libera la memoria eliminando todos los nodos de la cola.
+Cola::~Cola() {
     while (!vacio()) {
         desencolar();
     }
 }
 
-int Queue::longitud() {
-    // Devuelve el número de elementos en la cola.
+int Cola::longitud() {
     return _longitud;
 }
 
-void Queue::ordenar_prio(){
+void Cola::ordenar_prio(){
     Nodo* aux1 = new Nodo;
     Nodo* aux2 = new Nodo;
     Proceso paux;
@@ -41,7 +38,7 @@ void Queue::ordenar_prio(){
 
 }
 
-void Queue::encolar(Proceso data) {
+void Cola::encolar(Proceso data) {
     // Agrega un nuevo elemento al final de la cola.
     Nodo* newNode = new Nodo;
     newNode->proceso = data;
@@ -60,9 +57,7 @@ void Queue::encolar(Proceso data) {
     ordenar_prio();
 }
 
-Proceso Queue::inicio() {
-    // Devuelve el elemento al frente de la cola sin eliminarlo.
-    // Lanza una excepción si la cola está vacía.
+Proceso Cola::inicio() {
     if (vacio()) {
         throw std::runtime_error("La cola está vacía");
     }
@@ -70,9 +65,7 @@ Proceso Queue::inicio() {
 }
 
 
-Proceso Queue::fin() {
-    // Devuelve el elemento al final de la cola sin eliminarlo.
-    // Lanza una excepción si la cola está vacía.
+Proceso Cola::fin() {
     if (vacio()) {
         throw std::runtime_error("La cola está vacía");
     }
@@ -80,9 +73,7 @@ Proceso Queue::fin() {
 }
 
 
-Proceso Queue::desencolar() {
-    // Elimina y devuelve el elemento al frente de la cola.
-    // Lanza una excepción si la cola está vacía.
+Proceso Cola::desencolar() {
     if (vacio()) {
         throw std::runtime_error("La cola está vacía");
     }
@@ -101,14 +92,12 @@ Proceso Queue::desencolar() {
 }
 
 
-bool Queue::vacio() {
-    // Devuelve true si la cola está vacía, false en caso contrario.
+bool Cola::vacio() {
     return _longitud == 0;
 }
 
 
-void Queue::mostrar() {
-    // Muestra los elementos de la cola.
+void Cola::mostrar() {
     if (vacio()) {
         std::cout << "La cola está vacía" << std::endl;
         return;
