@@ -20,6 +20,27 @@ int Queue::longitud() {
     return _longitud;
 }
 
+void Queue::ordenar_prio(){
+    Nodo* aux1 = new Nodo;
+    Nodo* aux2 = new Nodo;
+    Proceso paux;
+    aux1= _primero;
+
+    while(aux1->siguiente !=nullptr){
+        aux2 = aux1->siguiente;
+        while(aux2!= nullptr){
+            if(aux1->proceso.getPrioridad() > aux2->proceso.getPrioridad()){
+                paux = aux1->proceso;
+                aux1->proceso = aux2->proceso;
+                aux2->proceso = paux;
+            }
+            aux2 = aux2->siguiente;
+        }
+        aux1 = aux1->siguiente;
+    }
+
+}
+
 void Queue::encolar(Proceso data) {
     // Agrega un nuevo elemento al final de la cola.
     Nodo* newNode = new Nodo;
@@ -36,6 +57,7 @@ void Queue::encolar(Proceso data) {
     }
 
     _longitud++;
+    ordenar_prio();
 }
 
 Proceso Queue::inicio() {
