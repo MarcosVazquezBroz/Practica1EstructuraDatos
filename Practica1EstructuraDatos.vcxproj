@@ -127,18 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Nucleo.cpp" />
+    <ClCompile Include="Pila.cpp" />
     <ClCompile Include="Cola.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="NodoCola.cpp" />
-    <ClCompile Include="NodoPila.cpp" />
-    <ClCompile Include="PilaProc.cpp" />
     <ClCompile Include="Proceso.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cola.h" />
-    <ClInclude Include="NodoCola.h" />
-    <ClInclude Include="NodoPila.h" />
-    <ClInclude Include="PilaProc.h" />
+    <ClInclude Include="Nucleo.h" />
+    <ClInclude Include="Pila.h" />
     <ClInclude Include="Proceso.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

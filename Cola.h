@@ -1,21 +1,27 @@
-#ifndef COLA_H
-#define COLA_H
-#include "NodoCola.h"
+#pragma once                        // Directiva para asegurar que este archivo se incluya solo una vez durante la compilación
 
-class Cola{
+#include "Proceso.h"
+
+class Queue {
+
     private:
-        NodoCola *primero;
-        NodoCola *ultimo;
-        int longitud;
+        struct Nodo {
+            Proceso proceso;        // Dato genérico almacenado en el nodo
+            Nodo* siguiente;        // Puntero al siguiente nodo en la cola
+        };
+        Nodo* _primero;             // Puntero al primer nodo de la cola
+        Nodo* _ultimo;              // Puntero al último nodo de la cola
+        int   _longitud;            // Número de elementos en la cola
+
     public:
-        Cola();
-        ~Cola();
-        int get_longitud();
-        void encolar(char);
-        char inicio();
-        char fin();
-        char desencolar();
-        bool es_vacia();
-        void mostrarCola(); //No es correcto
+        Queue();                    // Constructor
+        ~Queue();                   // Destructor
+
+        int longitud();             // Devuelve el número de elementos en la cola
+        void encolar(Proceso);      // Agrega un elemento al final de la cola
+        Proceso inicio();           // Devuelve el elemento al frente de la cola
+        Proceso fin();              // Devuelve el elemento al final de la cola
+        Proceso desencolar();       // Elimina y devuelve el elemento al frente de la cola
+        bool vacio();               // Devuelve true si la cola está vacía, false en caso contrario
+        void mostrar();             // Muestra los elementos en la cola (necesita implementación)
 };
-#endif

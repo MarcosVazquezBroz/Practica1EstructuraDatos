@@ -1,101 +1,101 @@
-#include "Cola.h"
-#include "NodoCola.h"
 #include <iostream>
-using namespace std;
+#include "Cola.h" 
 
-Cola::Cola()
-{
-    primero = NULL;
-    ultimo = NULL;
-    longitud = 0;
+Queue::Queue() {
+    // Constructor: Inicializa una cola vacía.
+    _primero = nullptr;
+    _ultimo = nullptr;
+    _longitud = 0;
 }
 
-Cola::~Cola() {}
-
-void Cola::encolar(char elemento)
-{
-    NodoCola *nuevo_nodo = new NodoCola(elemento);
-    if (es_vacia())
-    {
-        primero = nuevo_nodo;
-        ultimo = nuevo_nodo;
+Queue::~Queue() {
+    // Destructor: Libera la memoria eliminando todos los nodos de la cola.
+    while (!vacio()) {
+        desencolar();
     }
-    else
-    {
-        ultimo->siguiente = nuevo_nodo;
-        ultimo = nuevo_nodo;
-    }
-    longitud++;
 }
 
-char Cola::desencolar()
-{
-    if (!es_vacia())
-    {
-        char elemento = primero->elemento;
-        NodoCola *aux = primero;
-        if ((primero == ultimo) && (primero->siguiente == NULL))
-        {
-            primero = NULL;
-            ultimo = NULL;
-            aux->siguiente = NULL;
-            delete (aux);
-        }
-        else
-        {
-            primero = primero->siguiente;
-            aux->siguiente = NULL;
-            delete (aux);
-        }
-        longitud--;
-        return elemento;
-    }
-    return 'N';
+int Queue::longitud() {
+    // Devuelve el número de elementos en la cola.
+    return _longitud;
 }
 
-char Cola::inicio()
-{
-    if (!es_vacia())
-    {
-        return primero->elemento;
+void Queue::encolar(Proceso data) {
+    // Agrega un nuevo elemento al final de la cola.
+    Nodo* newNode = new Nodo;
+    newNode->proceso = data;
+    newNode->siguiente = nullptr;
+
+    if (vacio()) {
+        _primero = newNode;
+        _ultimo = newNode;
     }
-    return 'N';
+    else {
+        _ultimo->siguiente = newNode;
+        _ultimo = newNode;
+    }
+
+    _longitud++;
 }
 
-char Cola::fin()
-{
-    if (!es_vacia())
-    {
-        return ultimo->elemento;
+Proceso Queue::inicio() {
+    // Devuelve el elemento al frente de la cola sin eliminarlo.
+    // Lanza una excepción si la cola está vacía.
+    if (vacio()) {
+        throw std::runtime_error("La cola está vacía");
     }
-    return 'N';
+    return _primero->proceso;
 }
 
-int Cola::get_longitud()
-{
-    return longitud;
+
+Proceso Queue::fin() {
+    // Devuelve el elemento al final de la cola sin eliminarlo.
+    // Lanza una excepción si la cola está vacía.
+    if (vacio()) {
+        throw std::runtime_error("La cola está vacía");
+    }
+    return _ultimo->proceso;
 }
 
-bool Cola::es_vacia()
-{
-    return ((primero == NULL) && (ultimo == NULL));
+
+Proceso Queue::desencolar() {
+    // Elimina y devuelve el elemento al frente de la cola.
+    // Lanza una excepción si la cola está vacía.
+    if (vacio()) {
+        throw std::runtime_error("La cola está vacía");
+    }
+
+    Proceso data = _primero->proceso;
+    Nodo* temp = _primero;
+    _primero = _primero->siguiente;
+
+    if (_primero == nullptr) {
+        _ultimo = nullptr;
+    }
+
+    delete temp;
+    _longitud--;
+    return data;
 }
 
-void Cola::mostrarCola()
-// No es correcto
-{
-    NodoCola *aux = primero;
-    if (es_vacia())
-    {
-        cout << "Cola Vacía: " << endl;
+
+bool Queue::vacio() {
+    // Devuelve true si la cola está vacía, false en caso contrario.
+    return _longitud == 0;
+}
+
+
+void Queue::mostrar() {
+    // Muestra los elementos de la cola.
+    if (vacio()) {
+        std::cout << "La cola está vacía" << std::endl;
+        return;
     }
-    else
-    {
-        cout << "Datos de la Cola: " << endl;
-        while (aux)
-        {
-            cout << aux->elemento << endl;
-            aux = aux->siguiente;
-        }
+
+    Nodo* current = _primero;
+    while (current != nullptr) {
+        std::cout << current->proceso.getPID() << " ";
+        current = current->siguiente;
     }
+    std::cout << std::endl;
 }
