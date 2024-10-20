@@ -12,59 +12,6 @@ Simulacion::~Simulacion() {
 
 }
 
-void Simulacion::mostrarMenu() {
-
-    int opcion = 0;
-    do {
-        cout << "\n-------------Menú-------------\n";
-        cout << "1. Crear la pila de procesos\n";
-        cout << "2. Mostrar la pila de procesos\n";
-        cout << "3. Borrar la pila de procesos\n";
-        cout << "4. Mostrar la cola de espera\n";
-        cout << "5. Mostrar procesos en nucleos\n";
-        cout << "6. Simular paso del tiempo\n";
-        cout << "7. Simular todos los procesos\n";
-        cout << "8. Salir\n";
-        cout << "Seleccione una opción: ";
-        cin >> opcion;
-        switch (opcion) {
-        case 1:
-            crearPila();
-            break;
-        case 2:
-            mostrarPila();
-            break;
-        case 3:
-            borrarPila();
-            break;
-        case 4:
-            mostrarCola();
-            break;
-        case 5:
-            break;
-        case 6:
-            break;
-        case 7:
-            break;
-        case 8:
-            cout << "Saliendo del programa." << endl;
-            break;
-        default:
-            cout << "Opción no válida." << endl;
-        }
-        
-    } while (opcion != 8);
-    /*
-    Pasan N minutos:
-    comprobar si proceso en nucleo ha acabado -> nucleo libre
-    si tiempo proceso pila es menor que tiempo general -> 
-    proceso a nucleo libre o sino a pila
-    cuando se quede un nucleo libre primero se mira la cola
-
-    system("pause");
-    system("cls");
-    */
-}
 
 void Simulacion::crearPila() {
 
@@ -103,6 +50,19 @@ void Simulacion::mostrarNucleos() {
 
 }
 
+void Simulacion::mostrarMenu() {
+    cout << "\n--- Menú ---\n";
+    cout << "1. Crear la pila de procesos\n";
+    cout << "2. Mostrar la pila de procesos\n";
+    cout << "3. Borrar la pila de procesos\n";
+    cout << "4. Mostrar la cola de espera\n";
+    cout << "5. Iniciar simulación\n";
+    cout << "6. Salir\n";
+    cout << "Seleccione una opción: ";
+}
+
+
+
 void Simulacion::simularTiempo() {
     int minutos;
     cout << "Ingrese la cantidad de minutos a simular: ";
@@ -113,4 +73,79 @@ void Simulacion::simularTiempo() {
 
 void Simulacion::ejecutar() {
 
+}
+
+void Simulacion::iniciar() {
+    int opcion;
+
+    do {
+        // Limpiar pantalla
+        system("cls");
+
+        mostrarMenu();
+        cout << "Elige una opción: ";
+        cin >> opcion;
+
+        switch (opcion) {
+        case 1:
+            if (pila_procesos.vacia()) {
+                crearPila();
+                cout << "Se ha creado la pila de procesos." << endl;
+            }
+            else {
+                cout << "Ya existe una pila de procesos." << endl;
+            }
+            break;
+        case 2:
+            if (!pila_procesos.vacia()) {
+                mostrarPila();
+            }
+            else {
+                cout << "La pila está vacía." << endl;
+            }
+            break;
+        case 3:
+            if (!pila_procesos.vacia()) {
+                borrarPila();
+                cout << "La pila de procesos se ha eliminado." << endl;
+            }
+            else {
+                cout << "La pila ya está vacía." << endl;
+            }
+            break;
+        case 4:
+            if (!cola_prio.vacia()) {
+                mostrarCola();
+            }
+            else {
+                cout << "La cola está vacía." << endl;
+            }
+            break;
+        case 5:
+            if (pila_procesos.vacia()) {
+                cout << "Se debe crear una pila antes de comenzar la simulación." << endl;
+            }
+            else {
+                // Asigno los últimos procesos a los núcleos porque no empieza con la prioridad, sino con la hora de inicio, y la pila ya está ordenada así
+                for (int i; 0; 3) {
+                    nucleos[i].asignarProceso(pila_procesos.desapilar());
+                }
+                cout << "Se han iniciado 3 procesos." << endl;
+            }
+
+        case 0:
+            cout << "Saliendo..." << endl;
+            break;
+        default:
+            cout << "Opción no válida." << endl;
+        }
+
+        // Pausar para que el usuario vea el resultado antes de volver al menú
+        if (opcion != 0) {
+            cout << "Presiona Enter para continuar...";
+            cin.ignore();
+            cin.get();
+        }
+
+    } while (opcion != 0);
 }

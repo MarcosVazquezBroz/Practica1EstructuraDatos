@@ -8,7 +8,7 @@ Cola::Cola() {
 }
 
 Cola::~Cola() {
-    while (!vacio()) {
+    while (!vacia()) {
         desencolar();
     }
 }
@@ -44,7 +44,7 @@ void Cola::encolar(Proceso data) {
     newNode->proceso = data;
     newNode->siguiente = nullptr;
 
-    if (vacio()) {
+    if (vacia()) {
         _primero = newNode;
         _ultimo = newNode;
     }
@@ -58,7 +58,7 @@ void Cola::encolar(Proceso data) {
 }
 
 Proceso Cola::inicio() {
-    if (vacio()) {
+    if (vacia()) {
         throw std::runtime_error("La cola está vacía");
     }
     return _primero->proceso;
@@ -66,7 +66,7 @@ Proceso Cola::inicio() {
 
 
 Proceso Cola::fin() {
-    if (vacio()) {
+    if (vacia()) {
         throw std::runtime_error("La cola está vacía");
     }
     return _ultimo->proceso;
@@ -74,7 +74,7 @@ Proceso Cola::fin() {
 
 
 Proceso Cola::desencolar() {
-    if (vacio()) {
+    if (vacia()) {
         throw std::runtime_error("La cola está vacía");
     }
 
@@ -92,13 +92,13 @@ Proceso Cola::desencolar() {
 }
 
 
-bool Cola::vacio() {
+bool Cola::vacia() {
     return _longitud == 0;
 }
 
 
 void Cola::mostrar() {
-    if (vacio()) {
+    if (vacia()) {
         std::cout << "La cola está vacía" << std::endl;
         return;
     }

@@ -22,6 +22,6 @@ class Cola {
         Proceso inicio();           // Devuelve el elemento al frente de la cola
         Proceso fin();              // Devuelve el elemento al final de la cola
         Proceso desencolar();       // Elimina y devuelve el elemento al frente de la cola
-        bool vacio();               // Devuelve true si la cola est� vac�a, false en caso contrario
+        bool vacia();               // Devuelve true si la cola est� vac�a, false en caso contrario
         void mostrar();             // Muestra los elementos en la cola (necesita implementaci�n)
 };

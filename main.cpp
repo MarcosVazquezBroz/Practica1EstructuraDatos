@@ -11,6 +11,6 @@ int main()
     std::setlocale(LC_ALL, "");
 
     Simulacion simulacion;
-    simulacion.mostrarMenu();
+    simulacion.iniciar();
 
 }
