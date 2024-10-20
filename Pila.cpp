@@ -2,7 +2,7 @@
 #include "Pila.h"
 
 Pila::Pila() {
-    // Constructor: Inicializa una pila vacía.
+    // Constructor: Inicializa una pila vacï¿½a.
     _cima = nullptr;
     _longitud = 0;
 }
@@ -15,7 +15,7 @@ Pila::~Pila() {
 }
 
 int Pila::longitud() {
-    // Devuelve el número de elementos en la pila.
+    // Devuelve el nï¿½mero de elementos en la pila.
     return _longitud;
 }
 
@@ -30,18 +30,18 @@ void Pila::apilar(Proceso process) {
 
 Proceso Pila::cima() {
     // Devuelve el elemento en la parte superior de la pila sin eliminarlo.
-    // Lanza una excepción si la pila está vacía.
+    // Lanza una excepciï¿½n si la pila estï¿½ vacï¿½a.
     if (vacia()) {
-        throw std::runtime_error("La pila está vacía");
+        throw std::runtime_error("La pila estï¿½ vacï¿½a");
     }
     return _cima->proceso;
 }
 
 Proceso Pila::desapilar() {
     // Elimina y devuelve el elemento en la parte superior de la pila.
-    // Lanza una excepción si la pila está vacía.
+    // Lanza una excepciï¿½n si la pila estï¿½ vacï¿½a.
     if (vacia()) {
-        throw std::runtime_error("La pila está vacía");
+        throw std::runtime_error("La pila estï¿½ vacï¿½a");
     }
 
     Proceso data = _cima->proceso;
@@ -53,36 +53,41 @@ Proceso Pila::desapilar() {
 }
 
 bool Pila::vacia() {
-    // Devuelve true si la pila está vacía, false en caso contrario.
+    // Devuelve true si la pila estï¿½ vacï¿½a, false en caso contrario.
     return _longitud == 0;
 }
 
 void Pila::mostrar() {
     // Muestra los elementos de la pila.
     if (vacia()) {
-        std::cout << "La pila está vacía" << std::endl;
+        std::cout << "La pila estï¿½ vacï¿½a" << std::endl;
         return;
     }
 
     Nodo* current = _cima;
+    std::cout << " ------------------------------------------------------------"<<std::endl;
+    printf("|%-12s%-18s%-10s%-10s%-10s|\n","Id Proceso",
+    "Id Proceso Padre", "Inicio", "Duracion", "Prioridad");
     while (current != nullptr) {
-        std::cout << current->proceso.getPID() << " ";
+        printf("|%-12d%-18d%-10d%-10d%-10d|\n",current->proceso.getPID(),
+        current->proceso.getPPID(), current->proceso.getInicio(),
+        current->proceso.getDuracion(),current->proceso.getPrioridad());
         current = current->siguiente;
     }
-    std::cout << std::endl;
+    std::cout << " ------------------------------------------------------------"<<std::endl;
 }
 
 void Pila::ordenarPorInicio() {
     if (vacia()) {
-        std::cout << "La pila está vacía" << std::endl;
+        std::cout << "La pila estï¿½ vacï¿½a" << std::endl;
         return;
     }
     Nodo* actual;                       // Nodo para recorrer la pila
-    Nodo* sig;                          // Nodo siguiente para la comparación
-    bool intercambiado = true;          // Inicialmente asumimos que habrá intercambios
+    Nodo* sig;                          // Nodo siguiente para la comparaciï¿½n
+    bool intercambiado = true;          // Inicialmente asumimos que habrï¿½ intercambios
 
     while (intercambiado) {
-        intercambiado = false;          // Suponemos que no habrá intercambios en esta pasada
+        intercambiado = false;          // Suponemos que no habrï¿½ intercambios en esta pasada
         actual = _cima;                 
 
         while (actual->siguiente != nullptr) {

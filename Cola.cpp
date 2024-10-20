@@ -104,9 +104,14 @@ void Cola::mostrar() {
     }
 
     Nodo* current = _primero;
+    std::cout << " ------------------------------------------------------------"<<std::endl;
+    printf("|%-12s%-18s%-10s%-10s%-10s|\n","Id Proceso",
+    "Id Proceso Padre", "Inicio", "Duracion", "Prioridad");
     while (current != nullptr) {
-        std::cout << current->proceso.getPID() << " ";
+        printf("|%-12d%-18d%-10d%-10d%-10d|\n",current->proceso.getPID(),
+        current->proceso.getPPID(), current->proceso.getInicio(),
+        current->proceso.getDuracion(),current->proceso.getPrioridad());
         current = current->siguiente;
     }
-    std::cout << std::endl;
+    std::cout << " ------------------------------------------------------------"<<std::endl;
 }

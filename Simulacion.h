@@ -1,23 +1,25 @@
 #pragma once
 #include "Pila.h"
+#include "Cola.h"
 
 class Simulacion {
 
     private:
         Pila pila_procesos;
+        Cola cola_prio;
 
 	public:
 		Simulacion();
 		~Simulacion();
 
-        void mostrarMenu();         // Método para mostrar el menú de inicio
-        void crearPila();           // Opción 1: Crear procesos
-        void mostrarPila();         // Opción 2: Mostrar pila de procesos
-        void borrarPila();          // Opción 3: Borrar pila
-        void mostrarCola();         // Opción 4: Mostrar cola de espera (si la implementas)
-        void mostrarNucleos();      // Opción 5: Mostrar los detalles de los núcleos
-        void simularTiempo();       // Opción 6: Simular el paso de N minutos
-        void ejecutar();            // Opción 7: Simular la ejecución completa
+        void mostrarMenu();         // Mï¿½todo para mostrar el menï¿½ de inicio
+        void crearPila();           // Opciï¿½n 1: Crear procesos
+        void mostrarPila();         // Opciï¿½n 2: Mostrar pila de procesos
+        void borrarPila();          // Opciï¿½n 3: Borrar pila
+        void mostrarCola();         // Opciï¿½n 4: Mostrar cola de espera (si la implementas)
+        void mostrarNucleos();      // Opciï¿½n 5: Mostrar los detalles de los nï¿½cleos
+        void simularTiempo();       // Opciï¿½n 6: Simular el paso de N minutos
+        void ejecutar();            // Opciï¿½n 7: Simular la ejecuciï¿½n completa
         
 };
 
