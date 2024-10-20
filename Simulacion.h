@@ -1,12 +1,14 @@
 #pragma once
 #include "Pila.h"
 #include "Cola.h"
+#include "Nucleo.h"
 
 class Simulacion {
 
     private:
         Pila pila_procesos;
         Cola cola_prio;
+        int tiempo;
 
 	public:
 		Simulacion();
@@ -20,6 +22,5 @@ class Simulacion {
         void mostrarNucleos();      // Opci�n 5: Mostrar los detalles de los n�cleos
         void simularTiempo();       // Opci�n 6: Simular el paso de N minutos
         void ejecutar();            // Opci�n 7: Simular la ejecuci�n completa
-        
 };
 

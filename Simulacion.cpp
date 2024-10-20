@@ -16,24 +16,23 @@ void Simulacion::mostrarMenu() {
 
     int opcion = 0;
     do {
-        cout << "\n--- Menú ---\n";
+        cout << "\n-------------Menú-------------\n";
         cout << "1. Crear la pila de procesos\n";
         cout << "2. Mostrar la pila de procesos\n";
         cout << "3. Borrar la pila de procesos\n";
         cout << "4. Mostrar la cola de espera\n";
-        cout << "5. Salir\n";
+        cout << "5. Mostrar procesos en nucleos\n";
+        cout << "6. Simular paso del tiempo\n";
+        cout << "7. Simular todos los procesos\n";
+        cout << "8. Salir\n";
         cout << "Seleccione una opción: ";
         cin >> opcion;
         switch (opcion) {
         case 1:
             crearPila();
-            system("pause");
-            system("cls");
             break;
         case 2:
             mostrarPila();
-            system("pause");
-            system("cls");
             break;
         case 3:
             borrarPila();
@@ -42,13 +41,19 @@ void Simulacion::mostrarMenu() {
             mostrarCola();
             break;
         case 5:
+            break;
+        case 6:
+            break;
+        case 7:
+            break;
+        case 8:
             cout << "Saliendo del programa." << endl;
             break;
         default:
             cout << "Opción no válida." << endl;
         }
         
-    } while (opcion != 5);
+    } while (opcion != 8);
     /*
     Pasan N minutos:
     comprobar si proceso en nucleo ha acabado -> nucleo libre
@@ -79,7 +84,6 @@ void Simulacion::crearPila() {
 }
 
 void Simulacion::mostrarPila() {
-
     pila_procesos.ordenarPorInicio();
     pila_procesos.mostrar();
 }
